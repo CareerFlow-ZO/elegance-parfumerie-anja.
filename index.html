@@ -151,8 +151,7 @@ const products=[
 let activeCategory='Vse',cart=[],selectedQty=1,currentPage=1;const perPage=12;
 const money=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
 function imageFor(p){
- if(p.img && /^https:\/\/images\.unsplash\.com\//.test(p.img)) return p.img;
- const palettes=[['#d8b77b','#4b352b','#f5e9d5'],['#c7d0d1','#27343b','#e9eeee'],['#b8a0a7','#5c3847','#f4e9ed'],['#b7a78c','#514536','#eee5d7'],['#9aaf9e','#334b3c','#e7eee7'],['#d8a37d','#613d2e','#f8e6d7'],['#c5b5d8','#46385b','#f0eafa'],['#b2c2d8','#273e5b','#e7eef7']];
+ const palettes=[['#d8c49b','#4b352b','#f5eee2'],['#c7d0d1','#27343b','#e9eeee'],['#c8c0b2','#4b463d','#f1eee7'],['#b7a78c','#514536','#eee5d7'],['#9aaf9e','#334b3c','#e7eee7'],['#d8c8ad','#613d2e','#f8f2e8'],['#c5c0b6','#463f36','#f0eee8'],['#b2c2c8','#273e45','#e7eef0']];
  const pal=palettes[(p.id-1)%palettes.length], hue=(p.id*37)%360;
  const title=String(p.name||'ÉLÉGANCE').replace(/[&<>"]/g,'');
  const shape=p.id%3===0?'M75 75 Q70 75 70 88 L65 150 Q65 168 83 170 L117 170 Q135 168 135 150 L130 88 Q130 75 125 75 Z':p.id%3===1?'M78 76 L72 94 L72 151 Q72 168 88 170 L112 170 Q128 168 128 151 L128 94 L122 76 Z':'M80 76 Q72 83 72 96 L68 148 Q68 168 87 170 L113 170 Q132 168 132 148 L128 96 Q128 83 120 76 Z';
