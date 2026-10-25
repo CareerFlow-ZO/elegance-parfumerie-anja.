@@ -151,6 +151,7 @@ const products=[
 let activeCategory='Vse',cart=[],selectedQty=1,currentPage=1;const perPage=12;
 const money=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
 function imageFor(p){
+ if(p.img && /^https:\/\/images\.unsplash\.com\//.test(p.img)) return p.img;
  const palettes=[['#d8b77b','#4b352b','#f5e9d5'],['#c7d0d1','#27343b','#e9eeee'],['#b8a0a7','#5c3847','#f4e9ed'],['#b7a78c','#514536','#eee5d7'],['#9aaf9e','#334b3c','#e7eee7'],['#d8a37d','#613d2e','#f8e6d7'],['#c5b5d8','#46385b','#f0eafa'],['#b2c2d8','#273e5b','#e7eef7']];
  const pal=palettes[(p.id-1)%palettes.length], hue=(p.id*37)%360;
  const title=String(p.name||'ÉLÉGANCE').replace(/[&<>"]/g,'');
