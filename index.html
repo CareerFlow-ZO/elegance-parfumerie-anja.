@@ -167,17 +167,12 @@ const products=[...featuredBrandProducts,
 let activeCategory='Vse',cart=[],selectedQty=1,currentPage=1;const perPage=12;
 const money=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
 function imageFor(p){
- const photos=[
-  'https://images.unsplash.com/photo-1666621630026-862eea07236c?auto=format&fit=crop&w=800&q=85',
-  'https://images.unsplash.com/photo-1587304432009-5b88d3e7146b?auto=format&fit=crop&w=800&q=85',
-  'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85',
-  'https://images.unsplash.com/photo-1666621630026-862eea07236c?auto=format&fit=crop&w=800&q=85',
-  'https://images.unsplash.com/photo-1587304432009-5b88d3e7146b?auto=format&fit=crop&w=800&q=85',
-  'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=85',
+ // Neutral studio perfume photography only; avoid floral/rose backgrounds across the catalog.
+ const neutralPhotos=[
   'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=85',
   'https://images.unsplash.com/photo-1592842232655-e5d7d5f0a6a2?auto=format&fit=crop&w=800&q=85'
  ];
- return p.img || photos[(Math.max(1,Number(p.id)||1)-1)%photos.length];
+ return neutralPhotos[(Math.max(1,Number(p.id)||1)-1)%neutralPhotos.length];
 }
 function sizesFor(p){const base=p.price;return [{ml:30,price:Math.round(base*.55*100)/100},{ml:50,price:Math.round(base*.78*100)/100},{ml:100,price:base}];}
 
