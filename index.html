@@ -150,12 +150,17 @@ const products=[
 let activeCategory='Vse',cart=[],selectedQty=1,currentPage=1;const perPage=12;
 const money=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
 function imageFor(p){
- const palettes=[['#d8c49b','#4b352b','#f5eee2'],['#c7d0d1','#27343b','#e9eeee'],['#c8c0b2','#4b463d','#f1eee7'],['#b7a78c','#514536','#eee5d7'],['#9aaf9e','#334b3c','#e7eee7'],['#d8c8ad','#613d2e','#f8f2e8'],['#c5c0b6','#463f36','#f0eee8'],['#b2c2c8','#273e45','#e7eef0']];
- const pal=palettes[(p.id-1)%palettes.length], hue=(p.id*37)%360;
- const title=String(p.name||'ÉLÉGANCE').replace(/[&<>"]/g,'');
- const shape=p.id%3===0?'M75 75 Q70 75 70 88 L65 150 Q65 168 83 170 L117 170 Q135 168 135 150 L130 88 Q130 75 125 75 Z':p.id%3===1?'M78 76 L72 94 L72 151 Q72 168 88 170 L112 170 Q128 168 128 151 L128 94 L122 76 Z':'M80 76 Q72 83 72 96 L68 148 Q68 168 87 170 L113 170 Q132 168 132 148 L128 96 Q128 83 120 76 Z';
- const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="'+pal[2]+'"/><stop offset="1" stop-color="'+pal[0]+'"/></linearGradient><linearGradient id="glass" x2="1"><stop stop-color="'+pal[0]+'" stop-opacity=".95"/><stop offset=".48" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="'+pal[1]+'" stop-opacity=".8"/></linearGradient><filter id="shadow"><feGaussianBlur stdDeviation="5"/></filter></defs><rect width="200" height="240" fill="url(#bg)"/><circle cx="'+(30+(p.id*13)%140)+'" cy="'+(35+(p.id*17)%140)+'" r="'+(24+(p.id%4)*8)+'" fill="#fff" opacity=".18"/><ellipse cx="100" cy="193" rx="49" ry="9" fill="#4b352b" opacity=".2" filter="url(#shadow)"/><rect x="88" y="48" width="24" height="28" rx="3" fill="'+pal[1]+'"/><rect x="84" y="40" width="32" height="11" rx="2" fill="'+pal[0]+'" stroke="#fff" stroke-opacity=".6"/><path d="'+shape+'" fill="url(#glass)" stroke="#fff" stroke-opacity=".8" stroke-width="2"/><path d="M81 93 Q78 118 81 145" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/><rect x="76" y="113" width="48" height="31" rx="2" fill="'+pal[1]+'" opacity=".88"/><text x="100" y="126" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.8" letter-spacing=".8" fill="#fff">'+title.slice(0,18)+'</text><text x="100" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="4.5" letter-spacing="1" fill="'+pal[0]+'">ÉLÉGANCE</text><path d="M0 210 Q60 190 110 218 T200 210 V240 H0Z" fill="#fff" opacity=".14"/><text x="100" y="226" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" letter-spacing="2" fill="'+pal[1]+'">PARFUMERIE</text></svg>';
- return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+ const photos=[
+  'https://images.unsplash.com/photo-1666621630026-862eea07236c?auto=format&fit=crop&w=800&q=85',
+  'https://images.unsplash.com/photo-1587304432009-5b88d3e7146b?auto=format&fit=crop&w=800&q=85',
+  'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85',
+  'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=85',
+  'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=85',
+  'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=85',
+  'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=85',
+  'https://images.unsplash.com/photo-1592842232655-e5d7d5f0a6a2?auto=format&fit=crop&w=800&q=85'
+ ];
+ return photos[(Math.max(1,Number(p.id)||1)-1)%photos.length];
 }
 function sizesFor(p){const base=p.price;return [{ml:30,price:Math.round(base*.55*100)/100},{ml:50,price:Math.round(base*.78*100)/100},{ml:100,price:base}];}
 
