@@ -176,7 +176,7 @@ function imageFor(p){
   'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=85',
   'https://images.unsplash.com/photo-1592842232655-e5d7d5f0a6a2?auto=format&fit=crop&w=800&q=85'
  ];
- return photos[(Math.max(1,Number(p.id)||1)-1)%photos.length];
+ return p.img || photos[(Math.max(1,Number(p.id)||1)-1)%photos.length];
 }
 function sizesFor(p){const base=p.price;return [{ml:30,price:Math.round(base*.55*100)/100},{ml:50,price:Math.round(base*.78*100)/100},{ml:100,price:base}];}
 
